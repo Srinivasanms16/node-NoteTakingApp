@@ -21,7 +21,7 @@ else
         title:title,
         body:body
     });
-    writenote(notes);
+    appandnote(notes);
     console.log(chalk.green.inverse('Note added successfully !'));
    
 }
@@ -81,9 +81,14 @@ loadnote = ()=>{
 
 
 
-writenote = (notes)=>{
+appandnote = (notes)=>{
     let jstring = JSON.stringify(notes);
- fs.writeFile('note.json',jstring,()=>{});
+ fs.appendFile('note.json',jstring,()=>{});
+}
+
+clearandWrite = (notes)=>{
+    let jstring = JSON.stringify(notes);
+    fs.writeFile("note.json",jstring,()=>{})
 }
 
 module.exports = {
